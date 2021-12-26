@@ -1,0 +1,12 @@
+# print("FCFS")
+# print("LCFS")
+# print("Round Robin")
+
+# SFJ -> zbierz podane procesy [kolejnosc przyjscia, czas trwania, czas przyjścia]
+# sortuj po czasie trwania
+# zapisz czas oczekiwania każdego procesu
+# dwa rodzaje, z przerwaniem aktualnie działającego procesu, i bez przerwania
+# wyłuszczeniowy, i niewyłuszczecniowy
+# -> otrzymać plik wejściowy, w którym będą zapisane dane
+# -> zapisać dane w tablicy
+# iterować po tablicy tablic, czyli tablicy procesów
