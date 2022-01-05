@@ -10,3 +10,7 @@
 # -> otrzymać plik wejściowy, w którym będą zapisane dane
 # -> zapisać dane w tablicy
 # iterować po tablicy tablic, czyli tablicy procesów
+
+
+
+processes -> [index procesu][czas trwania procesu][moment przyjscia procesu][czas oczekiwania na wykonanie]
