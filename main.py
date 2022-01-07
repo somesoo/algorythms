@@ -1,5 +1,6 @@
 from sjf import Sjf
 from fcfs import FCFS
+from fcls import FCLS
 import generator
 import argparse
 
@@ -33,3 +34,12 @@ print("\n\nFCFS")
 fcfs_algorythm = FCFS(processes)
 fcfs_algorythm.main_loop()
 
+# getting the data from file
+with open(args.data_file, "r") as f:
+    processes = f.readlines()
+# preparing data to use
+for elem in range(len(processes)):
+    processes[elem] = processes[elem].split()
+print("\n\nFCLS")
+fcls_algorythm = FCLS(processes)
+fcls_algorythm.main_loop()

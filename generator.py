@@ -21,4 +21,3 @@ def fill_table_randomly():
 			line_str = [str(n) for n in line]  # create string list from integer list
 			file.write(" ".join(line_str) + "\n")
 
-
