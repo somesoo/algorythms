@@ -1,6 +1,5 @@
 import random
 import numpy as np
-import json
  
 def init_message():
 	print("zaimportowano generator")
