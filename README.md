@@ -1,4 +1,4 @@
-SJF algorythm
+SJF, FCFS, FCLS algorythm
 
 to run `main.py` you need to give one argument. It has to be file name which contains data about processes
 
