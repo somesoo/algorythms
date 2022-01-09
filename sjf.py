@@ -48,7 +48,7 @@ class Sjf:
 				Sjf.current_process_update(self)
 			else:
 				self.current_process[1] = str(x - 1)
-			Sjf.update_waiting_time(self)
+				Sjf.update_waiting_time(self)
 
 	def count_wait_time(self):
 		overall_waiting_time = 0
@@ -66,6 +66,7 @@ class Sjf:
 				break
 			else:
 				x += 1
+				#print(f"{i} \t {self.current_process}")
 		# print(self.processes)
 		overall = Sjf.count_wait_time(self)
 		avr = round(overall/len(self.ended_processes), 2)
