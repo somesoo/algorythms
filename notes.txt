@@ -1,6 +1,5 @@
 # print("FCFS")
 # print("LCFS")
-# print("Round Robin")
 
 # SFJ -> zbierz podane procesy [kolejnosc przyjscia, czas trwania, czas przyjścia]
 # sortuj po czasie trwania

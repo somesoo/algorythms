@@ -5,25 +5,29 @@ class FCFS:
 	current_process = []
 	processes = []
 
+# init object, copy the table, estimate needed time to run
 	def __init__(self, table_of_processes):
 		self.processes = table_of_processes
 		# count the overall time
 		for i in range(len(self.processes)):
 			self.exe_time += int(self.processes[i][1])
 		# add some extra time - in case there is some time between processes
-		self.exe_time += 200
+		self.exe_time += 50
 		print(f"Time needed: {self.exe_time}s")
 
+# check if at the current time any process arrived
 	def check_for_processes(self, time):
 		for el in range(len(self.processes)):
 			if int(self.processes[el][2]) == time:
 				self.delivered_processes.append(self.processes[el])
 
+# update waiting time for all processes that has come, and are not currently running
 	def update_waiting_time(self):
 		for i in range(len(self.delivered_processes)):
 			if i != 0:
 				self.delivered_processes[i][3] = int(self.delivered_processes[i][3]) + 1
 	
+# update current process run time, by decreasing it by 1, and check if it has finished
 	def current_process_update(self):
 		if len(self.delivered_processes) != 0:
 			self.current_process = self.delivered_processes[0]
@@ -37,12 +41,14 @@ class FCFS:
 				self.current_process[1] = str(x - 1)
 			FCFS.update_waiting_time(self)
 
+# sum waiting time for all processes at the end
 	def count_wait_time(self):
 		overall_waiting_time = 0
 		for i in range(len(self.ended_processes)):
 			overall_waiting_time += int(self.ended_processes[i][3])
 		return overall_waiting_time	 		
 
+#using all above functions in correct order to get the finall result
 	def main_loop(self):
 		x, overall, avr = 0, 0, 0
 		for i in range(self.exe_time):

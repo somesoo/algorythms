@@ -7,7 +7,7 @@ def init_message():
 init_message()
 
 
-records = 100
+records = 100000
 data = 4
 def fill_table_randomly():
 	table = [[0 for i in range(data)] for i in range(records)]
@@ -21,3 +21,15 @@ def fill_table_randomly():
 			line_str = [str(n) for n in line]  # create string list from integer list
 			file.write(" ".join(line_str) + "\n")
 
+
+def create_queue():
+	table = [0 for i in range(records)]
+	for i in range(len(table)):
+		table[i] = np.random.randint(10)
+	with open('queue.txt', 'w') as file:
+		for line in table:
+			line_str = [str(line)]  # create string list from integer list
+			file.write(" ".join(line_str) + "\n")
+
+create_queue()
+fill_table_randomly()
