@@ -1,4 +1,5 @@
 import numpy as np
+import datetime as dt
 class Sjf:
     # initialize some needed variable
     exe_time = 0
@@ -68,13 +69,13 @@ class Sjf:
 
 # using all above functions in correct order to get the finall result
     def main_loop(self):
+        czas_s = dt.datetime.now()
         x, overall, avr = 0, 0, 0
         while len(self.processes) != self.finished_processes:
             Sjf.check_for_processes(self, x)
             Sjf.current_process_update(self)
-            #if len(self.processes) == self.finished_processes:
-            #    print(f"SJF\teverything finished\n\toverall time used: {x}")
-            #    break
+            if x % 1000 == 0:
+                print(x, " SJF\t", self.current_process)
             x += 1
                 # print(f"{i} \t {self.current_process}")
         print(f"SJF\teverything finished\n\toverall time used: {x}\n")
@@ -83,3 +84,5 @@ class Sjf:
         avr = round(overall / len(self.ended_processes), 2)
         print(f"SJF\tOverall waiting time: {overall}s")
         print(f"SJF\tAverage waiting time: {avr}s")
+        print("\tSFJ:\t",dt.datetime.now() - czas_s)
+        

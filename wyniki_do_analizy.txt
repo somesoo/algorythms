@@ -1,0 +1,24 @@
+Dla 30 000
+Seed:
+
+FCLS	everything finished
+	overall time used: 165675
+
+FCLS	 30000
+FCLS	Overall waiting time: 2884722380s
+FCLS	Average waiting time: 96157.41s
+0:39:51.950591
+
+SJF	everything finished
+	overall time used: 165675
+
+SJF	 30000
+SJF	Overall waiting time: 1573867689s
+SJF	Average waiting time: 52462.26s
+
+FCFS	everything finished
+	overall time used: 165675
+
+FCFS	 30000
+FCFS	Overall waiting time: 2399454467s
+FCFS	Average waiting time: 79981.82s

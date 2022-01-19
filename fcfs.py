@@ -1,3 +1,4 @@
+import datetime as dt
 class FCFS:
 	exe_time = 0
 	delivered_processes = []
@@ -52,15 +53,19 @@ class FCFS:
 
 #using all above functions in correct order to get the finall result
 	def main_loop(self):
+		czas_s = dt.datetime.now()
 		x, overall, avr = 0, 0, 0
 		while len(self.processes) != self.finished_processes:
 			FCFS.check_for_processes(self, x)
 			FCFS.current_process_update(self)
+			if x % 1000 == 0:
+				print(x, " FCFS\t", self.current_process)
 			x += 1
 		# print(self.processes)
-		print(f"FCFS\teverything finished\n\toverall time used: {x}")
+		print(f"FCFS\teverything finished\n\toverall time used: {x}\n")
 		print("FCFS\t", len(self.ended_processes))
 		overall = FCFS.count_wait_time(self)
 		avr = round(overall/len(self.ended_processes), 2)
 		print(f"FCFS\tOverall waiting time: {overall}s")
 		print(f"FCFS\tAverage waiting time: {avr}s")
+		print("\tFCFS:\t",dt.datetime.now() - czas_s)

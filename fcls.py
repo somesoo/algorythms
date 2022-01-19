@@ -1,3 +1,4 @@
+import datetime as dt
 class FCLS:
 	exe_time = 0
 	delivered_processes = []
@@ -12,7 +13,7 @@ class FCLS:
 		for i in range(len(self.processes)):
 			self.exe_time += int(self.processes[i][1])
 		# add some extra time - in case there is some time between processes
-		self.exe_time += 5000
+		self.exe_time += 50000000
 		# print(f"Time needed: {self.exe_time}s")
 
 # check if at the current time any process arrived
@@ -51,12 +52,13 @@ class FCLS:
 
 #using all above functions in correct order to get the finall result
 	def main_loop(self):
+		czas_s = dt.datetime.now()
 		x, overall, avr = 0, 0, 0
 		while len(self.processes) != self.finished_processes:
 			FCLS.check_for_processes(self, x)
 			FCLS.current_process_update(self)
 			if x % 1000 == 0:
-				print(x, "\t", self.current_process)
+				print(x, " FCLS\t", self.current_process)
 			x += 1
 		print(f"FCLS\teverything finished\n\toverall time used: {x}\n")
 		# print(self.processes)
@@ -65,3 +67,4 @@ class FCLS:
 		avr = round(overall/len(self.ended_processes), 2)
 		print(f"FCLS\tOverall waiting time: {overall}s")
 		print(f"FCLS\tAverage waiting time: {avr}s")
+		print("\tFCLS:\t",dt.datetime.now() - czas_s)
