@@ -47,4 +47,4 @@ class LFU:
         LFU.update_unique(self)
         for x in range(len(self.queue)):
             LFU.update_next_frame(self, self.queue, x)
-        print("Changes: ", self.changes)
+        print("LFU\tChanges: ", self.changes)

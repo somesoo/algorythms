@@ -36,4 +36,4 @@ class LRU:
         for x in range(len(self.queue)):
             LRU.update_next_frame(self, self.queue, x)
             # print(self.current_frame_status)
-        print("Changes: ", self.changes)    
+        print("LRU\tChanges: ", self.changes)    

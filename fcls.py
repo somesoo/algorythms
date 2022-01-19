@@ -4,6 +4,7 @@ class FCLS:
 	ended_processes = []
 	current_process = []
 	processes = []
+	finished_processes = 0
 
 	def __init__(self, table_of_processes):
 		self.processes = table_of_processes
@@ -11,8 +12,8 @@ class FCLS:
 		for i in range(len(self.processes)):
 			self.exe_time += int(self.processes[i][1])
 		# add some extra time - in case there is some time between processes
-		self.exe_time += 50
-		print(f"Time needed: {self.exe_time}s")
+		self.exe_time += 5000
+		# print(f"Time needed: {self.exe_time}s")
 
 # check if at the current time any process arrived
 	def check_for_processes(self, time):
@@ -35,6 +36,7 @@ class FCLS:
 			if x == 0:
 				self.ended_processes.append(self.delivered_processes[-1])
 				del self.delivered_processes[-1]
+				self.finished_processes += 1
 				FCLS.current_process_update(self)
 			else:
 				self.current_process[1] = str(x - 1)
@@ -50,17 +52,16 @@ class FCLS:
 #using all above functions in correct order to get the finall result
 	def main_loop(self):
 		x, overall, avr = 0, 0, 0
-		for i in range(self.exe_time):
-			FCLS.check_for_processes(self, i)
+		while len(self.processes) != self.finished_processes:
+			FCLS.check_for_processes(self, x)
 			FCLS.current_process_update(self)
-			#print(i, "\t", self.current_process)
-			if len(self.delivered_processes) == 0 and i > self.exe_time/4:
-				print(f"everything finished\noverall time used: {x}")
-				break
-			else:
-				x += 1
+			if x % 1000 == 0:
+				print(x, "\t", self.current_process)
+			x += 1
+		print(f"FCLS\teverything finished\n\toverall time used: {x}\n")
 		# print(self.processes)
+		print("FCLS\t", len(self.ended_processes))
 		overall = FCLS.count_wait_time(self)
 		avr = round(overall/len(self.ended_processes), 2)
-		print(f"Overall waiting time: {overall}s")
-		print(f"Average waiting time: {avr}s")
+		print(f"FCLS\tOverall waiting time: {overall}s")
+		print(f"FCLS\tAverage waiting time: {avr}s")
