@@ -26,17 +26,17 @@ class LRU:
         return 0
     # update next frame
     def update_next_frame(self, table, curr_time):
+        # looking for the same site in frame
         if LRU.check_if_exist(self, table, curr_time):
             pass
+        # if not found checking for the page that was least recently used
         else:
             self.changes += 1
             x = LRU.choose_smalest(self, self.current_frame_status)
-            # print(x)
             self.current_frame_status[x][0] = int(self.queue[curr_time][0])
             self.current_frame_status[x][1] = curr_time+1
 
     def main_loop(self):
         for x in range(len(self.queue)):
             LRU.update_next_frame(self, self.queue, x)
-            # print(self.current_frame_status)
         print("LRU\tChanges: ", self.changes)    
