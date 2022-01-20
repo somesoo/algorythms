@@ -1,6 +1,5 @@
 import datetime as dt
 class FCFS:
-	exe_time = 0
 	delivered_processes = []
 	ended_processes = []
 	current_process = []
@@ -10,12 +9,6 @@ class FCFS:
 # init object, copy the table, estimate needed time to run
 	def __init__(self, table_of_processes):
 		self.processes = table_of_processes
-		# count the overall time
-		for i in range(len(self.processes)):
-			self.exe_time += int(self.processes[i][1])
-		# add some extra time - in case there is some time between processes
-		self.exe_time += 5000
-		# print(f"Time needed: {self.exe_time}s")
 
 # check if at the current time any process arrived
 	def check_for_processes(self, time):
@@ -58,14 +51,14 @@ class FCFS:
 		while len(self.processes) != self.finished_processes:
 			FCFS.check_for_processes(self, x)
 			FCFS.current_process_update(self)
-			if x % 1000 == 0:
-				print(x, " FCFS\t", self.current_process)
+			#if x % 1000 == 0:
+			#	print(x, " FCFS\t", self.current_process)
 			x += 1
 		# print(self.processes)
-		print(f"FCFS\teverything finished\n\toverall time used: {x}\n")
+		print(f"FCFS\teverything finished\n\toverall time used: {x}")
 		print("FCFS\t", len(self.ended_processes))
 		overall = FCFS.count_wait_time(self)
 		avr = round(overall/len(self.ended_processes), 2)
 		print(f"FCFS\tOverall waiting time: {overall}s")
 		print(f"FCFS\tAverage waiting time: {avr}s")
-		print("\tFCFS:\t",dt.datetime.now() - czas_s)
+		print("\tFCFS:\t",dt.datetime.now() - czas_s, "\n")

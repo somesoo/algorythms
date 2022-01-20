@@ -5,14 +5,11 @@ class LFU:
     changes = 0
     def __init__(self, table):
         self.queue = table
-
-    def update_unique(self):
-        for x in self.queue:
+        for x in range(len(table)):
             temp = [0, 0]
-            temp[0] = x[0]
+            temp[0] = x
             if temp not in self.unique_list:
                 self.unique_list.append(temp)
-        # print(self.unique_list)
 
     def choose_smalest(self, status):
         if status[0][1] <= status[1][1] and status[0][1] <= status[2][1]:
@@ -44,7 +41,6 @@ class LFU:
             self.current_frame_status[x][1] = self.unique_list[int(self.queue[curr_time][0])][1]
 
     def main_loop(self):
-        LFU.update_unique(self)
         for x in range(len(self.queue)):
             LFU.update_next_frame(self, self.queue, x)
         print("LFU\tChanges: ", self.changes)
