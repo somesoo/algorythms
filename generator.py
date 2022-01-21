@@ -19,8 +19,7 @@ def generator(sid, records, f_name):
 	for i in range(len(table)):
 		table[i][0]= i+1
 		table[i][1]= abs(int(np.random.normal(loc = 6, scale = 2, size = 1)))
-		table[i][2]= 0#np.random.randint(records)
-	# print(table)
+		table[i][2]= np.random.randint(records)
 	with open(f_name, 'w') as file:
 		for line in table:
 			line_str = [str(n) for n in line]  # create string list from integer list

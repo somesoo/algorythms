@@ -50,11 +50,8 @@ class FCLS:
 		while len(self.processes) != self.finished_processes:
 			FCLS.check_for_processes(self, x)
 			FCLS.current_process_update(self)
-			#if x % 1000 == 0:
-			#	print(x, " FCLS\t", self.current_process)
 			x += 1
 		print(f"FCLS\teverything finished\n\toverall time used: {x}")
-		# print(self.processes)
 		print("FCLS\t", len(self.ended_processes))
 		overall = FCLS.count_wait_time(self)
 		avr = round(overall/len(self.ended_processes), 2)

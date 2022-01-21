@@ -26,7 +26,6 @@ class FCFS:
 	def current_process_update(self):
 		if len(self.delivered_processes) != 0:
 			self.current_process = self.delivered_processes[0]
-			# print("\t\t", self.current_process)
 			x = int(self.current_process[1])
 			if x == 0:
 				self.ended_processes.append(self.delivered_processes[0])
@@ -51,10 +50,7 @@ class FCFS:
 		while len(self.processes) != self.finished_processes:
 			FCFS.check_for_processes(self, x)
 			FCFS.current_process_update(self)
-			#if x % 1000 == 0:
-			#	print(x, " FCFS\t", self.current_process)
 			x += 1
-		# print(self.processes)
 		print(f"FCFS\teverything finished\n\toverall time used: {x}")
 		print("FCFS\t", len(self.ended_processes))
 		overall = FCFS.count_wait_time(self)

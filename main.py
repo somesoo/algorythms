@@ -8,13 +8,14 @@ import argparse
 import datetime as dt
 from multiprocessing import Pool
 
+
+# code asks for 5 parameters while compilation
 parser = argparse.ArgumentParser()
 parser.add_argument(dest="data_file", type=str, help="type file with processes")
 parser.add_argument(dest="queue_file", type=str, help="type file with queue")
 parser.add_argument(dest="use_generator", type=int, help="choose if you would like to use generators")
 parser.add_argument(dest="number_of_processes", type=int, help="type number of processes")
 parser.add_argument(dest="seed", type=int, help="seed that will be used")
-
 args = parser.parse_args()
 
 seed = args.seed
@@ -44,6 +45,7 @@ for item in range(len(queue)):
 lru_data = queue.copy()
 lfu_data = queue.copy()
 
+# creating objects
 sjf_algorythm = Sjf(sjf_data)
 fcfs_algorythm = FCFS(fcfs_data)
 fcls_algorythm = FCLS(fcls_data)
@@ -51,6 +53,8 @@ fcls_algorythm = FCLS(fcls_data)
 lfu_algorythm = LFU(lfu_data)
 lru_algorythm = LRU(lru_data)
 
+
+# multithreading
 my_foo_obj_list = [sjf_algorythm, fcfs_algorythm, fcls_algorythm, lfu_algorythm, lru_algorythm]
 #my_foo_obj_list = [sjf_algorythm]
 def work(foo):

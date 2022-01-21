@@ -17,7 +17,6 @@ class Sjf:
         for el in range(len(self.processes)):
             if int(self.processes[el][2]) == time:
                 self.delivered_processes.append(self.processes[el])
-                #self.delivered_processes.sort(key=lambda x: x[1])
 
 # update waiting time for all processes that has come, and are not currently running
     def update_waiting_time(self):
@@ -30,7 +29,6 @@ class Sjf:
         self.delivered_processes.sort(key=lambda x: x[1])
         if len(self.delivered_processes) != 0:
             self.current_process = self.delivered_processes[0]
-            # print("\t\t", self.current_process)
             x = int(self.current_process[1])
             if x == 0:
                 self.ended_processes.append(self.delivered_processes[0])
@@ -55,10 +53,7 @@ class Sjf:
         while len(self.processes) != self.finished_processes:
             Sjf.check_for_processes(self, x)
             Sjf.current_process_update(self)
-            #if x % 1000 == 0:
-            #    print(x, " SJF\t", self.current_process)
             x += 1
-                # print(f"{i} \t {self.current_process}")
         print(f"SJF\teverything finished\n\toverall time used: {x}")
         print("SJF\t", len(self.ended_processes))
         overall = Sjf.count_wait_time(self)

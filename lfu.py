@@ -40,7 +40,6 @@ class LFU:
         else:
             self.changes += 1
             x = LFU.choose_smalest(self, self.current_frame_status)
-            # print(x)
             self.current_frame_status[x][0] = int(self.queue[curr_time][0])
             self.unique_list[int(self.queue[curr_time][0])][1] += 1
             self.current_frame_status[x][1] = self.unique_list[int(self.queue[curr_time][0])][1]
